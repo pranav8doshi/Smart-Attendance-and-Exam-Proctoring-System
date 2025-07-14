@@ -1,0 +1,1550 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/SWD Youtube2.png" type="image/x-icon">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"> <!-- Only one AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Keep latest or desired Bootstrap version -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{% static 'style_index.css' %}" />
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+
+    <title>VIT SW&D</title>
+
+    <style>
+        /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        #header {
+            height: 50px;
+            /* position: fixed; */
+            left: 0;
+            top: 0;
+            right: 0;
+            transition: all 0.5s;
+            z-index: 997;
+        }
+
+        /*.swiper-pagination {*/
+        /*    position: ;*/
+        /*}*/
+
+        /* #header.header-scrolled,
+        #header.header-inner {
+            background: #5D001E;
+            height: 50px;
+        } */
+
+        #header #logo h1 {
+            font-size: 36px;
+            margin: 0;
+            font-family: "Raleway", sans-serif;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        #header #logo h1 span {
+            color: #c9df8a;
+        }
+
+        #header #logo h1 a,
+        #header #logo h1 a:hover {
+            color: rgb(0, 0, 0);
+        }
+
+        #header #logo img {
+            padding: 0;
+            margin: 0;
+            max-height: 40px;
+        }
+
+        @media (max-width: 992px) {
+            #header #logo img {
+                max-height: 5vh;
+
+            }
+        }
+
+        /*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+        /**
+* Desktop Navigation
+*/
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navbar li {
+            position: relative;
+        }
+
+        .navbar>ul>li {
+            white-space: nowrap;
+            padding: 10px 0 10px 12px;
+        }
+
+        .navbar a,
+        .navbar a:focus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #234d20;
+            font-family: "Raleway", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: 0.3s;
+            position: relative;
+            padding: 6px 4px;
+        }
+
+        .navbar a i,
+        .navbar a:focus i {
+            font-size: 12px;
+            line-height: 0;
+            margin-left: 5px;
+        }
+
+        .navbar>ul>li>a:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background-color: #c9df8a;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        .navbar a:hover:before,
+        .navbar li:hover>a:before,
+        .navbar .active:before {
+            visibility: visible;
+            width: 100%;
+        }
+
+        .navbar a:hover,
+        .navbar .active,
+        .navbar .active:focus,
+        .navbar li:hover>a {
+            color: #234d20;
+        }
+
+
+        .navbar .dropdown ul {
+            display: block;
+            position: absolute;
+            left: 12px;
+            top: calc(100% + 30px);
+            margin: 0;
+            padding: 10px 0;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            background: #fff;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            transition: 0.3s;
+        }
+
+        .navbar .dropdown ul li {
+            min-width: 200px;
+        }
+
+        .navbar .dropdown ul a {
+            padding: 10px 20px;
+            font-size: 14px;
+            text-transform: none;
+            color: #234d20;
+        }
+
+        .navbar .dropdown ul a i {
+            font-size: 12px;
+        }
+
+        .navbar .dropdown ul a:hover,
+        .navbar .dropdown ul .active:hover,
+        .navbar .dropdown ul li:hover>a {
+            color: #c9df8a;
+        }
+
+        .navbar .dropdown:hover>ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+
+        .navbar .dropdown .dropdown ul {
+            top: 0;
+            left: calc(100% - 30px);
+            visibility: hidden;
+        }
+
+        .navbar .dropdown .dropdown:hover>ul {
+            opacity: 1;
+            top: 0;
+            left: 100%;
+            visibility: visible;
+        }
+
+        @media (max-width: 1366px) {
+            .navbar .dropdown .dropdown ul {
+                left: -90%;
+            }
+
+            .navbar .dropdown .dropdown:hover>ul {
+                left: -100%;
+            }
+        }
+
+        /**
+  * Mobile Navigation
+  */
+/* Mobile Navigation */
+.mobile-nav-toggle {
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+    line-height: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 1001;
+}
+
+@media (max-width: 991px) {
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .navbar ul {
+        display: none;
+    }
+}
+
+.navbar-mobile {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    transition: all 0.4s ease-in-out;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+}
+
+.navbar-mobile ul {
+    width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-height: 75vh;
+    transition: transform 0.3s ease;
+
+}
+ul li {
+  line-height: 1.5;
+}
+
+.navbar-mobile > ul > li {
+    padding: 0;
+    text-align: center;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+    display: block;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: #060c22;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover > a {
+    background-color: #c9df8a;
+    color: #060c22;
+    border-radius: 6px;
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+    margin: 15px;
+    background-color: #c9df8a;
+    color: #060c22;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.navbar-mobile .dropdown ul {
+    display: none;
+    margin: 10px auto;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-mobile .dropdown ul li {
+    min-width: 200px;
+}
+
+.navbar-mobile .dropdown ul a {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul li:hover > a {
+    color: #c9df8a;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.navbar-mobile .dropdown > .dropdown-active {
+    display: block;
+}
+
+        /* End of footer */
+
+        .playlist {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            position: relative;
+            padding: 10px;
+        }
+
+        a.playlist.five:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: white;
+            width: 0%;
+            height: 100%;
+
+            border-bottom: 2px solid white;
+
+            transition: width 0.3s ease;
+        }
+
+        a.playlist.five:hover:after {
+            left: 0;
+            width: 100%;
+            color: white;
+            transition: width .3s ease;
+        }
+
+        .hover-img {
+            background-color: #000;
+            color: #fff;
+            display: inline-block;
+            margin: 8px;
+            max-width: 95%;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hover-img * {
+            box-sizing: border-box;
+            transition: all 0.45s ease;
+        }
+
+        .hover-img:before,
+        .hover-img:after {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-top: 32px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 32px solid rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            transition: all 0.3s ease;
+            z-index: 1;
+            opacity: 0;
+            transform: scaleY(2);
+        }
+
+        .hover-img img {
+            vertical-align: top;
+            max-width: 100%;
+            backface-visibility: hidden;
+        }
+
+        .hover-img figcaption {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            align-items: center;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.1em;
+            opacity: 0;
+            z-index: 2;
+            transition-delay: 0.1s;
+            /*font-size: 24px;*/
+            font-weight: 400;
+            letter-spacing: 1px;
+            /*text-transform: uppercase;*/
+        }
+
+        .hover-img:hover:before,
+        .hover-img:hover:after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .hover-img:hover>img {
+            opacity: 0.7;
+        }
+
+        .hover-img:hover figcaption {
+            opacity: 1;
+        }
+
+        .hover14 section::before {
+            position: absolute;
+            top: 0;
+            left: -75%;
+            z-index: 2;
+            display: block;
+            content: '';
+            width: 50%;
+            height: 100%;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+            -webkit-transform: skewX(-25deg);
+            transform: skewX(-25deg);
+        }
+
+        .hover14 section:hover::before {
+            -webkit-animation: shine 1.5s;
+            animation: shine 1.5s;
+        }
+
+        @-webkit-keyframes shine {
+            100% {
+                left: 125%;
+            }
+        }
+
+        @keyframes shine {
+            100% {
+                left: 125%;
+            }
+        }
+
+        .button1 {
+            display: inline-block;
+            position: relative;
+        }
+
+        .button1 span {
+            -webkit-transition: 0.6s;
+            -moz-transition: 0.6s;
+            -o-transition: 0.6s;
+            transition: 0.6s;
+            -webkit-transition-delay: 0.2s;
+            -moz-transition-delay: 0.2s;
+            -o-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+
+        .button1:before,
+        .button1:after {
+            content: '';
+            position: absolute;
+            top: 0em;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            -webkit-transition: .4s, opacity .6s;
+            -moz-transition: .4s, opacity .6s;
+            -o-transition: .4s, opacity .6s;
+            transition: .4s, opacity .6s;
+        }
+
+        /* :before */
+
+        .button1:before {
+            content: attr(data-hover);
+            -webkit-transform: translate(-150%, 0);
+            -moz-transform: translate(-150%, 0);
+            -ms-transform: translate(-150%, 0);
+            -o-transform: translate(-150%, 0);
+            transform: translate(-150%, 0);
+        }
+
+        /* :after */
+
+        .button1:after {
+            content: attr(data-active);
+            -webkit-transform: translate(150%, 0);
+            -moz-transform: translate(150%, 0);
+            -ms-transform: translate(150%, 0);
+            -o-transform: translate(150%, 0);
+            transform: translate(150%, 0);
+        }
+
+        /* Span on :hover and :active */
+
+        .button1:hover span,
+        .button1:active span {
+            opacity: 0;
+            -webkit-transform: scale(0.3);
+            -moz-transform: scale(0.3);
+            -ms-transform: scale(0.3);
+            -o-transform: scale(0.3);
+            transform: scale(0.3);
+        }
+
+        /*
+    We show :before pseudo-element on :hover
+    and :after pseudo-element on :active
+*/
+
+        .button1:hover:before,
+        .button1:active:after {
+            opacity: 1;
+            -webkit-transform: translate(0, 0);
+            -moz-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+            -webkit-transition-delay: .4s;
+            -moz-transition-delay: .4s;
+            -o-transition-delay: .4s;
+            transition-delay: .4s;
+        }
+
+        /*
+  We hide :before pseudo-element on :active
+*/
+
+        .button1:active:before {
+            -webkit-transform: translate(-150%, 0);
+            -moz-transform: translate(-150%, 0);
+            -ms-transform: translate(-150%, 0);
+            -o-transform: translate(-150%, 0);
+            transform: translate(-150%, 0);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+
+        .burger {
+            display: none;
+        }
+
+        .nav-events:hover {
+            font-size: 1.1rem;
+            transform: skew(-2deg) translateX(-5%);
+            transition: 0.3s;
+        }
+
+        .fs {
+            font-size: 1.2rem;
+        }
+
+        .active {
+            color: #234d20;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 5px;
+            background-color: black;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (max-width:760px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .events {
+                font-size: 2vw;
+            }
+
+            .navs {
+                position: absolute;
+                right: 0px;
+                left: opx;
+                height: 96vh;
+                top: 50px;
+                background-color: #fdfce9;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                font-size: 5vw;
+                z-index: 3;
+                transition: transform 0.5s ease-in;
+                transform: translateX(100%);
+            }
+
+            .navs li {
+                opacity: 0;
+            }
+
+            .burger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hidden {
+                overflow: hidden;
+            }
+
+
+        }
+
+        .nav-active {
+            transform: translateX(0%);
+        }
+
+        @keyframes navLinkFade {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-8px, 6px);
+            background-color: #234d20;
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-8px, -6px);
+            background-color: #234d20;
+        }
+
+        .footer2 {
+            display: none;
+        }
+
+        @media screen and (max-width:760px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .footer1 {
+                display: none;
+            }
+
+            .footer2 {
+                display: inline;
+            }
+
+            .nav-events:hover {
+                font-size: 2.2rem;
+                transition: 0.3s;
+            }
+
+        }
+
+        /*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+        #footer {
+            background: #234d20;
+            padding: 0 0 25px 0;
+            color: #eee;
+            font-size: 14px;
+        }
+
+        #footer .footer-top {
+            background: #040919;
+            padding: 60px 0 30px 0;
+        }
+
+        #footer .footer-top .footer-info {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-info h3 {
+            font-size: 26px;
+            margin: 0 0 20px 0;
+            padding: 2px 0 2px 0;
+            line-height: 1;
+            font-family: "Raleway", sans-serif;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        #footer .footer-top .footer-info img {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        #footer .footer-top .footer-info p {
+            font-size: 14px;
+            line-height: 24px;
+            margin-bottom: 0;
+            font-family: "Raleway", sans-serif;
+            color: #fff;
+        }
+
+        #footer .footer-top .social-links a {
+            display: inline-block;
+            background: #222636;
+            color: #eee;
+            line-height: 1;
+            margin-right: 4px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #footer .footer-top .social-links a i {
+            line-height: 0;
+            font-size: 16px;
+        }
+
+        #footer .footer-top .social-links a:hover {
+            background: #c9df8a;
+            color: #fff;
+        }
+
+        #footer .footer-top h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #c9df8a;
+        }
+
+        #footer .footer-top .footer-links {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #footer .footer-top .footer-links ul i {
+            padding-right: 5px;
+            color: #c9df8a;
+            font-size: 18px;
+        }
+
+        #footer .footer-top .footer-links ul li {
+            border-bottom: 1px solid #262c44;
+            padding: 10px 0;
+        }
+
+        #footer .footer-top .footer-links ul li:first-child {
+            padding-top: 0;
+        }
+
+        #footer .footer-top .footer-links ul a {
+            color: #eee;
+        }
+
+        #footer .footer-top .footer-links ul a:hover {
+            color: #c9df8a;
+        }
+
+        #footer .footer-top .footer-contact {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-contact p {
+            line-height: 26px;
+        }
+
+        #footer .footer-top .footer-newsletter {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-newsletter input[type=email] {
+            border: 0;
+            padding: 6px 8px;
+            width: 65%;
+        }
+
+        #footer .footer-top .footer-newsletter input[type=submit] {
+            background: #c9df8a;
+            border: 0;
+            width: 35%;
+            padding: 6px 0;
+            text-align: center;
+            color: #fff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #footer .footer-top .footer-newsletter input[type=submit]:hover {
+            background: #c9df8a;
+        }
+
+        #footer .copyright {
+            background: #234d20;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        #footer .credits {
+            text-align: center;
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        /* .iframe-navbar{
+            height:60px;
+            width:98vw;
+            overflow-y: hidden;
+            border: none;
+        } */
+        @media (min-width: 992px) {
+    .col-lg-3 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+    </style>
+    <style>
+        .glightbox-button {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .gbtn {
+            color: white;
+        }
+
+        .glightbox-button-prev,
+        .glightbox-button-next {
+            opacity: 1 !important;
+            visibility: visible !important;
+            width: 40px;
+            height: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .glightbox-container .gslide-media {
+                max-height: 80vh;
+                object-fit: contain;
+            }
+        }
+
+        .swiper-slide {
+            position: relative;
+        }
+
+        .event-wrapper {
+        position: relative;
+        display: inline-block;
+        }
+
+        .event-image {
+        width: 100%;
+        display: block;
+        }
+
+        .event-wrapper:hover .desc-box {
+        display: block;
+        }
+
+        .desc-toggle-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffffffcc;
+            border: none;
+            padding: 5px 20px;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .desc-box {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+            right: 10px;
+            background: #fff;
+            color: #000;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            z-index: 9;
+            font-size: 17px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown .mobile-nav-toggle ul {
+         position: absolute;
+         left: -200px;
+        }
+    </style>
+
+
+</head>
+
+<body class="hover14 body" style="background-color: #f4f7f6">
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center " style="background-color: #fff;">
+        <div class="container-fluid container-xxl d-flex align-items-center">
+
+            <div id="logo" class="me-auto" style="display: flex; gap: 100px; width: 50%;">
+                <a href="#" class="scrollto"><img src="{% static 'images/Vit_logo.png' %}" alt="" title=""></a>
+                <a href="#" class="scrollto"><img src="{% static 'images/swdlogo.png'%}" alt="" title=""></a>
+                <a href="#" class="scrollto"><img src="{% static 'images/NSS.png'%}" alt="" title=""></a>
+            </div>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+
+                    <ul>
+                        <li><a class="nav-link scrollto active" href="#whoweare">Home</a></li>
+                        <li><a class="nav-link scrollto " href="#promise">Our Promise</a></li>
+                        <li><a class="nav-link scrollto " href="#mission">Mission</a></li>
+                        <li><a class="nav-link scrollto " href="#gallery" style="font-weight:bold;">Gallery</a></li>
+                        <li><a class="nav-link scrollto " href="#flagship">Flagship Events</a></li>
+                        <li><a class="nav-link scrollto " href="{% url 'login' %}">Login</a></li>
+
+                        <li class="dropdown"><a href="#" style="text-decoration: none;"><span>Registration</span> <i
+                                    class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="{% url 'sreg' %}" style="text-decoration: none;">Secretary</a></li>
+                                <li><a href="{% url 'creg' %}" style="text-decoration: none;">Coordinator</a>
+                                </li>
+                                <li><a href="{% url 'vreg' %}" style="text-decoration: none;">Volunteer</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto " href="{% url 'home' %}">Development</a></li>
+                    </ul>
+
+
+                <li class="dropdown mobile-nav-toggle">
+                    <a style="color: #000;"><i class="bi bi-list" style="font-size: 20px;"></i></a>
+                    <ul style="position: absolute; left: -165px;">
+                        <li><a class="nav-link scrollto active" href="#whoweare">Home</a></li>
+                        <li><a class="nav-link scrollto " href="#promise">Our Promise</a></li>
+                        <li><a class="nav-link scrollto " href="#mission">Mission</a></li>
+                        <li><a class="nav-link scrollto " href="#gallery" style="font-weight:bold;">Gallery</a></li>
+                        <li><a class="nav-link scrollto " href="#flagship">Flagship Events</a></li>
+                        <li><a class="nav-link scrollto " href="{% url 'login' %}">Login</a></li>
+
+                        <li class="dropdown"><a href="#" style="text-decoration: none;"><span>Registration</span> <i
+                                    class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="{% url 'sreg' %}" style="text-decoration: none;">Secretary</a></li>
+                                <li><a href="{% url 'creg' %}" style="text-decoration: none;">Coordinator</a>
+                                </li>
+                                <li><a href="{% url 'vreg' %}" style="text-decoration: none;">Volunteer</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto " href="{% url 'home' %}">Development</a></li>
+                    </ul>
+                </li>
+            </nav>
+        </div>
+    </header>
+    <!-- <iframe class="iframe-navbar" src="NavbarNew/index.html" style="border: none"></iframe> -->
+    <!-- End Header -->
+
+    <!-- who we are -->
+    <section id="whoweare"
+        class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+        <div class="content">
+            <h2>WHO ARE WE</h2>
+            <p class="major text">We at the Social Welfare & Development Committee, readily work with a motto to
+                empower
+                society and transform lives to bring out the positive changes in the society. We aim to be a helping
+                hand towards everyone in society by organizing various events and activities throughout the year. Main
+                strength of our committee lies in equality and unity amongst every member. We are always ready to do
+                someone a good turn to be good for society with no expectations in return.</p>
+            <div class="container-fluid my-4">
+                <a class="button" href="https://swd.vit.edu/team/team_2024/index.html" role="button"><span
+                        style="text-transform: uppercase; font-weight: bold;">Meet the Team</span></a>
+            </div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/who.jpeg' %}" alt="" />
+        </div>
+    </section>
+
+    <section id="promise" class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+        id="first" style="background-color: #234d20;">
+        <div class="content" style="color: white;">
+            <h2 style="color: white;">OUR PROMISE</h2>
+            <p>At SW&D, we promise to create a safe-space where people, who share our objective, can express themselves
+                freely and work together as a team. We promise to work with vigour and diligence to ameliorate society
+                through a myriad of activities. We also vow to utilize our platform to inculcate social values and
+                helpful nature amongst people and move one step closer to achieving our ultimate goal-sustainable
+                development.</p>
+        </div>
+        <div class="image">
+            <figure><img src="{% static 'images/pro.jpg' %}" alt="" /></figure>
+        </div>
+    </section>
+
+    <!-- Three -->
+    <section id="mission" class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in"
+        style="background-color: #234d20;">
+        <div class="content" style="color: white;">
+            <h2 style="color: white;">OUR MISSION</h2>
+            <p>To formulate, implement, and coordinate policies and programs for the needs and welfare of poor and needy
+                people, as well as to provide quality social services to help them in the face of challenges in life. We
+                promote social and family responsibilities in order to develop individual potential, empower, and build
+                a team that is innovative, cohesive, and professional.</p>
+        </div>
+        <div class="image">
+            <figure><img src="{% static 'images/garbage.jfif' %}" alt="" /></figure>
+        </div>
+    </section>
+    <!-- GP2-->
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery">
+
+        <div class="container" data-aos="fade-up">
+            <div class="section-header" style="text-align: center;">
+                <h2>Gallery</h2>
+                <p style="margin: 0px;">Check our gallery from the recent events</p>
+            </div>
+        </div>
+
+        <!-- Activities Gallery  -->
+        <div class="gallery-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/Aashakiran.png" class="img-fluid event-image" alt="AashaKiran Event" />
+
+                      <button class="desc-toggle-btn" onclick="openGallery('aashaKiran-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+
+                      <div class="desc-box">
+                        Ensures health and holistic development for rural children aged 0-3. Works on nutrition,
+                        hygiene, and early childhood care.
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="swiper-slide">
+                    <div class="event-wrapper">
+                        <img src="https://prism2024.vercel.app/assets/image/ss_logos/Aavishkar.png" class="img-fluid" alt="Aavishkar Event">
+                        <button class="desc-toggle-btn" onclick="openGallery('avishkar-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                        <div class="desc-box" style="text-align: center;">
+                            Engages with NGOs supporting mentally challenged individuals. Conducts interactive sessions to
+                            spread joy and inclusivity.
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="swiper-slide">-->
+                <!--    <div class="event-wrapper">-->
+                <!--        <img src="https://prism2024.vercel.app/assets/image/ss_logos/Go Green.png" class="img-fluid" alt="Go Green Event">-->
+                <!--        <button class="desc-toggle-btn"  onclick="openGallery('gogreen-gallery', 0)"><i class="fa-solid fa-play"></i></button>-->
+                <!--        <div class="desc-box" style="text-align: center;">-->
+                <!--            Organizes tree plantation drives to promote a greener Pune. Spreads environmental awareness and-->
+                <!--            love for nature.-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+
+                <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/Muskaan.png" class="img-fluid" alt="Muskaan Event" onclick="openGallery('muskan-gallery', 0)" style="cursor: pointer;">
+                      <button class="desc-toggle-btn" onclick="openGallery('muskan-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                      <div class="desc-box" style="text-align: center;">
+                        Spreads awareness about the value of voting in a democratic society. Encourages active and informed participation in elections.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/Swachha Pune.png" class="img-fluid" alt="Swachha Pune" onclick="openGallery('swachhapune-gallery', 0)" style="cursor: pointer;">
+                      <button class="desc-toggle-btn" onclick="openGallery('swachhapune-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                      <div class="desc-box" style="text-align: center;">
+                        Leads cleanliness drives to promote hygiene across Pune. Encourages civic responsibility and public participation.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/Udaan.png" class="img-fluid" alt="Udaan Event" onclick="openGallery('udan-gallery', 0)" style="cursor: pointer;">
+                      <button class="desc-toggle-btn" onclick="openGallery('udan-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                      <div class="desc-box" style="text-align: center;">
+                        Empowers women through education, skill-building, and awareness. Promotes confidence and independence among women in need. Supports women to become self-reliant and strong decision-makers. Focuses on personal growth, leadership, and self-confidence.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/Vatsalya.png" class="img-fluid" alt="Vatsalya Event" onclick="openGallery('vatsalya-gallery', 0)" style="cursor: pointer;">
+                      <button class="desc-toggle-btn" onclick="openGallery('vatsalya-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                      <div class="desc-box" style="text-align: center;">
+                        Shares time and care with elderly residents of old age homes. Creates a sense of belonging through compassion and companionship.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="event-wrapper">
+                      <img src="https://prism2024.vercel.app/assets/image/ss_logos/UTKARSH_LOGO.png" class="img-fluid" alt="Utkarsh Event" onclick="openGallery('utkarsh-gallery', 0)" style="cursor: pointer;">
+                      <button class="desc-toggle-btn" onclick="openGallery('utkarsh-gallery', 0)"><i class="fa-solid fa-play"></i></button>
+                      <div class="desc-box" style="text-align: center;">
+                        Bridges the knowledge gap for students in underprivileged schools. Conducts academic sessions and fun learning activities to uplift education.
+                      </div>
+                    </div>
+                  </div>
+        </div>
+
+        <div class="swiper-pagination" style="margin: -10px auto;"></div>
+
+    </section><!-- End Gallery Section -->
+
+    <!-- Flagship-->
+    <section id="flagship" class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in"
+        style="margin-top: 10px;">
+        <div class="content" style="background-color: #234d20; color: white;">
+            <h2 style="color: white;">FLAGSHIP EVENTS</h2>
+            <p>To formulate, implement, and coordinate policies and programs for the needs and welfare of poor and needy
+                people, as well as to provide quality social services to help them in the face of challenges in life. We
+                promote social and family responsibilities in order to develop individual potential, empower, and build
+                a team that is innovative, cohesive, and professional.</p>
+            <!-- <div class="container-fluid my-4">
+                <a class="button" href="flagship/flagship.html" role="button" style="color: white;"><span
+                        style="text-transform: uppercase; font-weight: bold;">Know More</span></a>
+            </div> -->
+        </div>
+
+        <div class="image">
+            <figure><img src="{% static 'images/slider.jpg' %}" alt="" /></figure>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <img src="{% static 'images/swdlogo.png'%}" alt="Logo" style="margin: 0 auto; height: 100px;">
+                        <p>Social Welfare and Development Committee with the motto of "Empowering Society, Transforming
+                            Lives" has been helping society for several years and continues to do so in any
+                            circumstance.
+                            It is dedicated to making a positive impact through compassionate initiatives.
+                            The team works across various domains, empowering vulnerable communities and fostering hope.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            <b style="color:white">Social Welfare & Development</b><br>
+                            Vishwakarma Institute of Technology<br>
+                            666, Upper Indiranagar, Bibwewadi, <br>
+                            Pune - 411 037 <br>
+                            <strong style="color:white">Phone:</strong> +91 98239 05061 / +91 82752 93813 <br>
+                            <strong style="color:white">Email:</strong> vitswd@vit.edu<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="https://twitter.com/vit_socials" target="_blank" class="twitter"><i
+                                    class="bi bi-twitter"></i></a>
+                            <a href="https://www.facebook.com/vitsocials" target="_blank" class="facebook"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/vitsocials/" target="_blank" class="instagram"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UCJnaNm8Ns08rUIhsdFM2fhA" target="_blank"
+                                class="google-plus"><i class="bi bi-youtube"></i></a>
+                            <a href="https://www.linkedin.com/company/vit-social-welfare-development/" target="_blank"
+                                class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2024-25 Social Welfare & Development Committee, VIT Pune.
+            </div>
+        </div>
+    </footer><!-- End  Footer -->
+
+
+    <script>
+        /**
+         * Easy selector helper function
+         */
+        const select = (el, all = false) => {
+            el = el.trim()
+            if (all) {
+                return [...document.querySelectorAll(el)]
+            } else {
+                return document.querySelector(el)
+            }
+        }
+
+        /**
+         * Easy event listener function
+         */
+        const on = (type, el, listener, all = false) => {
+            let selectEl = select(el, all)
+            if (selectEl) {
+                if (all) {
+                    selectEl.forEach(e => e.addEventListener(type, listener))
+                } else {
+                    selectEl.addEventListener(type, listener)
+                }
+            }
+        }
+
+        /**
+         * Easy on scroll event listener
+         */
+        const onscroll = (el, listener) => {
+            el.addEventListener('scroll', listener)
+        }
+
+        /**
+         * Navbar links active state on scroll
+         */
+        let navbarlinks = select('#navbar .scrollto', true)
+        const navbarlinksActive = () => {
+            let position = window.scrollY + 200
+            navbarlinks.forEach(navbarlink => {
+                if (!navbarlink.hash) return
+                let section = select(navbarlink.hash)
+                if (!section) return
+                if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+                    navbarlink.classList.add('active')
+                } else {
+                    navbarlink.classList.remove('active')
+                }
+            })
+        }
+        window.addEventListener('load', navbarlinksActive)
+        onscroll(document, navbarlinksActive)
+        /**
+         * Toggle .header-scrolled class to #header when page is scrolled
+         */
+        let selectHeader = select('#header')
+        if (selectHeader) {
+            const headerScrolled = () => {
+                if (window.scrollY > 100) {
+                    selectHeader.classList.add('header-scrolled')
+                } else {
+                    selectHeader.classList.remove('header-scrolled')
+                }
+            }
+            window.addEventListener('load', headerScrolled)
+            onscroll(document, headerScrolled)
+        }
+        /**
+         * Mobile nav toggle
+         */
+        on('click', '.mobile-nav-toggle', function (e) {
+            select('#navbar').classList.toggle('navbar-mobile')
+            this.classList.toggle('bi-list')
+            this.classList.toggle('bi-x')
+        })
+
+        /**
+         * Mobile nav dropdowns activate
+         */
+        on('click', '.navbar .dropdown > a', function (e) {
+            if (select('#navbar').classList.contains('navbar-mobile')) {
+                e.preventDefault()
+                this.nextElementSibling.classList.toggle('dropdown-active')
+            }
+        }, true)
+
+        /**
+         * Scrool with ofset on links with a class name .scrollto
+         */
+        on('click', '.scrollto', function (e) {
+            if (select(this.hash)) {
+                e.preventDefault()
+
+                let navbar = select('#navbar')
+                if (navbar.classList.contains('navbar-mobile')) {
+                    navbar.classList.remove('navbar-mobile')
+                    let navbarToggle = select('.mobile-nav-toggle')
+                    navbarToggle.classList.toggle('bi-list')
+                    navbarToggle.classList.toggle('bi-x')
+                }
+                scrollto(this.hash)
+            }
+        }, true)
+
+        /**
+         * Scroll with ofset on page load with hash links in the url
+         */
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                if (select(window.location.hash)) {
+                    scrollto(window.location.hash)
+                }
+            }
+        });
+    </script>
+
+    <!-- AashaKiran Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.13_7bfebba8.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.13_9cb9608d.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.13_d6c3db1a.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.13_eee011bb.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.14_7cbba518.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Aashakiran/WhatsApp Image 2025-03-07 at 21.28.14_c7095bbb.jpg"
+        class="gallery-lightbox d-none" data-gallery="aashaKiran-gallery"></a>
+
+    <!-- Avishkar Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/4-01-25__(1).jpg" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/0e839946-e7df-4763-8427-12f21ed9e739.jpg" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/20250104_113635AMByGPSMapCamera.jpg" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/IMG-20250106-WA0044.jpg" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/IMG20250104113433.jpg" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/IMG_3780.JPG" class="gallery-lightbox d-none"
+        data-gallery="avishkar-gallery"></a>
+    <!-- <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Avishkar/IMG_3901.HEIC" class="gallery-lightbox d-none" data-gallery="avishkar-gallery"></a> -->
+
+    <!-- Go green Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Go Green/IMG_7168.HEIC" class="gallery-lightbox d-none"
+        data-gallery="gogreen-gallery"></a>
+
+    <!-- Muskan Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/20250104_154510.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/20250125_150108.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0014.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0016.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0017.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0026.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0027.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Muskaan/IMG-20250306-WA0031.jpg" class="gallery-lightbox d-none"
+        data-gallery="muskan-gallery"></a>
+
+
+
+    <!-- Swachha Pune Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250111_080757.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250111_083230.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250112_090539.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250119_081334.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250119_085852.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Swatch Pune/20250125_084919.jpg" class="gallery-lightbox d-none"
+        data-gallery="swachhapune-gallery"></a>
+
+
+    <!-- Udaan Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Udaan/20250104_155940.jpg" class="gallery-lightbox d-none"
+        data-gallery="udan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Udaan/IMG-20250104-WA0012.jpg" class="gallery-lightbox d-none"
+        data-gallery="udan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Udaan/IMG-20250105-WA0056.jpg" class="gallery-lightbox d-none"
+        data-gallery="udan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Udaan/IMG-20250125-WA0031.jpg" class="gallery-lightbox d-none"
+        data-gallery="udan-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Udaan/IMG-20250125-WA0057.jpg" class="gallery-lightbox d-none"
+        data-gallery="udan-gallery"></a>
+
+
+    <!-- Vatsalya Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/46d533d4-a24f-4ef3-9b19-c16a871f5d4e.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/4e6f0edb-e36e-4aee-843f-fa20dd43ff46.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/859cd673-7a37-48ba-b464-3565520614d2.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/92bbc77b-75a7-402f-b259-d44022b2c9a7.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/9ce04d98-e585-4b93-861c-0f865186659d.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/dc31d85e-0cd4-4831-8f8a-ac22af0a5556.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Vaatsalya/e30ddfab-4d14-4fdb-a1ca-778d1b57de29.JPG" class="gallery-lightbox d-none"
+        data-gallery="vatsalya-gallery"></a>
+
+    <!-- Utkasrh Gallery -->
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/20250110_170303.jpg" class="gallery-lightbox d-none"
+        data-gallery="utkarsh-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/20250110_170438.jpg" class="gallery-lightbox d-none"
+        data-gallery="utkarsh-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/20250110_170503.jpg" class="gallery-lightbox d-none"
+        data-gallery="utkarsh-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/IMG-20250105-WA0040.jpg" class="gallery-lightbox d-none"
+        data-gallery="utkarsh-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/IMG-20250125-WA0133.jpg" class="gallery-lightbox d-none"
+        data-gallery="utkarsh-gallery"></a>
+    <a href="https://prism2024.vercel.app/assets/image/Social Services'25/Utkarsh/WhatsApp Image 2025-01-11 at 21.12.25_610b81ea.jpg"
+        class="gallery-lightbox d-none" data-gallery="utkarsh-gallery"></a>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- AOS JS -->
+
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Open Gallery FUnction For each Activity -->
+    <script>
+        function openGallery(galleryName, index = 0) {
+            const gallery = GLightbox({
+                selector: `[data-gallery="${galleryName}"]`,
+                touchNavigation: true,
+                loop: true,
+                zoomable: true,
+                // autoplayVideos: true,
+                startAt: index,
+                moreLength: 60,
+                plyr: {
+                    css: '',
+                    js: ''
+                },
+                openEffect: 'fade',
+                closeEffect: 'fade',
+                slideEffect: 'slide',
+                svg: {
+                    next: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>',
+                    prev: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>',
+                    close: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>'
+                }
+            });
+            gallery.open();
+        }
+    </script>
+
+    <script>
+        function toggleDesc(button) {
+            const desc = button.nextElementSibling;
+            const isVisible = desc.style.display === "block";
+
+            desc.style.display = isVisible ? "none" : "block";
+            button.textContent = isVisible ? "⯈" : "⯆";
+        }
+    </script>
+
+<script src="{% static 'index.js' %}"></script>
+
+
+
+
+
+</body>
+
+</html>

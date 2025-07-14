@@ -1,0 +1,639 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood-D 25</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'Blood_D_styles.css' %}">
+    <style>
+
+        /* Global Font and Base Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .count-box {
+            background: white;
+            padding: 25px 50px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(211, 47, 47, 0.3);
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out;
+            border: 2px solid #d32f2f;
+            min-width: 150px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .count-box:hover {
+            transform: scale(1.1);
+        }
+
+        #bloodDonorCount {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #b71c1c;
+            margin-left: 10px;
+        }
+
+        .blood-drop {
+            font-size: 2.5rem;
+            color: #d32f2f;
+            animation: drop-bounce 1.5s infinite;
+        }
+
+        @keyframes drop-bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Loader Animation */
+        .loader {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #b71c1c;
+        }
+
+        .dot {
+            animation: blink 1.5s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 8vh;
+        }
+
+        .logo-group img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FF4444;
+            margin: 0;
+        }
+
+        /* Heart Animation Styling */
+        .heartAni {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin: 10px 0;
+        }
+
+        .heartAni svg {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .kiwi {
+            fill: none;
+            stroke: #FF4444;
+            stroke-width: 5;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            background: #fee2e2;
+            border-radius: 50%;
+            padding: 10px;
+            /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+        }
+
+        .heart img {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+
+        .logo-group .swd {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-group {
+                justify-content: center;
+                gap: 8vh;
+                margin-bottom: 20px;
+            }
+
+
+            .header-text h1 {
+                font-size: 2.9rem;
+            }
+
+            .logo-group img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-group .swd {
+                width: 70px;
+                height: 70px;
+            }
+
+            .heartAni {
+                height: 150px;
+            }
+
+            .heart img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Additional sections styling */
+        /* .donation-counter {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        } */
+
+        .camps-section,
+        .contact-section {
+            margin: 0 auto;
+        }
+
+        .camps-section h2,
+        .contact-section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        /* Celebration */
+        .celebration-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            color: #ffcc00;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Celebration message styling */
+        .celebration-overlay h2 {
+            font-size: 8vw;
+            /* Responsive font size */
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        .celebration-overlay p {
+            font-size: 4vw;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: #f0f;
+            opacity: 0.9;
+            animation: fall 8s linear forwards;
+            /* Lasts longer */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Firework Effect */
+        .firework {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff0, #f00, transparent);
+            border-radius: 50%;
+            animation: explode 3s ease-out forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(15);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 6vw;
+            }
+
+            p {
+                font-size: 3vw;
+            }
+
+            button {
+                font-size: 2.5vw;
+                padding: 10px 20px;
+            }
+
+            .celebration-overlay h2 {
+                font-size: 10vw;
+            }
+
+            .celebration-overlay p {
+                font-size: 6vw;
+            }
+
+            /* .celebration-overlay{
+        display: flex;
+        flex-direction: column;
+    } */
+        }
+        .contact-list li {
+    margin-bottom: 5px; /* Adjust spacing as needed */
+}
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen bg-gradient">
+        <div class="container">
+            <div class="header">
+                <div class="logo-group">
+
+                    <img src="{% static 'images/Vit_logo.png' %}" alt="VIT Logo">
+                    <img src="{% static 'images/swdlogo.png' %}" alt="SWD Logo" class="logo swd">
+                    <img src="{% static 'images/NSS.png' %}" alt="NSS Logo" class="logo swd">
+                </div>
+                <div class="header-text">
+                    <h1>Blood-D 25</h1>
+                </div>
+
+                <div class="heartAni">
+                    <svg id="ecg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200">
+                        <path class="kiwi" d="M10,100
+                        H100 L120,50 L140,150 L160,100
+                        H250 L270,50 L290,150 L310,100
+                        H400 L420,50 L440,150 L460,100
+                        H550 L570,50 L590,150 L610,100
+                        H700 L720,50 L740,150 L760,100
+                        H850 L870,50 L890,150 L910,100
+                        H990" />
+                    </svg>
+
+                    <div class="heart">
+                        <img src="{% static 'images/Blood_D.png' %}" alt="Heart" style="filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-1">
+                <div class="card donation-counter">
+                    <!-- <div class="icon-container">
+                        <i data-lucide="droplet" class="animate-pulse"></i>
+                    </div> -->
+                    <div class="text-center">
+                        <div class="count-box">
+                            <span class="blood-drop">🩸</span>
+                            <span id="bloodDonorCount" class="loader">
+                                <!--<span class="dot">.</span>-->
+                                <!--<span class="dot">.</span>-->
+                                <!--<span class="dot">.</span>-->
+                            </span>
+                        </div>
+                        <!-- Celebration Overlay -->
+                        <div class="celebration-overlay" id="celebration">
+                            <h2>🎉 Congratulations! 🎉</h2>
+                            <p>we reached <span id="milestone"></span> donations!</p>
+                        </div>
+                        <p style="font-weight: 600;">Total Donations</p>
+                        <br>
+                        <h4>Every Two Seconds Someone Needs Blood</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div style="text-align: center; margin-bottom: 1rem;">
+                <h3>Every Two Seconds Someone Needs Blood</h3>
+            </div> -->
+            <div class="camps-section">
+                <h2>Locations 📍</h2>
+                <div class="camps-grid">
+                    <div class="camp-card">
+                        <h4>VIT Campus</h4>
+                        <div class="camp-details">
+                            <p><i style="color:black;" data-lucide="calendar"></i>27, 28-03-2025</p>
+                            <p><i data-lucide="map-pin"></i>Seminar Hall & Staff Parking</p>
+                            <p><i data-lucide="clock"></i>9:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-content">
+                    <div class="contact-section">
+                        <h2>Contact Us 📞</h2>
+                        <div class="contact-grid">
+                            <ul class="contact-list">
+                                <li>
+                                    <i data-lucide="user" class="icon"></i>
+                                    Om Shintre - <a href="tel:+918238380309" class="phone">8238380309</a>
+                                </li>
+                                <li>
+                                    <i data-lucide="user" class="icon"></i>
+                                    Rohit Mutha - <a href="tel:+919175826027" class="phone">9175826027</a>
+                                </li>
+                                <li>
+                                    <i data-lucide="user" class="icon"></i>
+                                    Aryan Chaure - <a href="tel:+919146170004" class="phone">9146170004</a>
+                                </li>
+                                <li>
+                                    <i data-lucide="user" class="icon"></i>
+                                    Diksha Parsharam - <a href="tel:+919356877385" class="phone">9356877385</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="copyright" style="margin-bottom: 0; width: 100%;margin-left: 0;">
+                <p>Copyright © 2025 SW&D, VIT Pune, All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+
+const bloodDonorCount = document.getElementById('bloodDonorCount');
+
+const updateBloodDonorCount = () => {
+    // Show loader
+    // bloodDonorCount.innerHTML = '<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
+
+    fetch('blood-donor-count/')
+        .then(response => response.json())
+        .then(data => {
+            const newCount = data.count; // Ensure the correct key is used
+            bloodDonorCount.textContent = newCount;
+
+            if (parseInt(newCount, 10) % 100 == 0)
+                triggerCelebration(parseInt(newCount, 10));
+        })
+        .catch(error => {
+            console.error("Error fetching blood donor count:", error);
+            bloodDonorCount.textContent = "...";
+        });
+};
+
+updateBloodDonorCount();
+setInterval(updateBloodDonorCount, 30000);
+
+        // Animate ECG Line
+        gsap.to(".kiwi", {
+            strokeDashoffset: 0,
+            duration: 4,
+            repeat: -1,
+            ease: "linear",
+            onUpdate: checkHeartTouch
+        });
+
+
+        let heart = document.querySelector(".heart");
+        let isBeating = false;
+
+        function checkHeartTouch() {
+            // Get ECG path position
+            let ecgPath = document.querySelector(".kiwi");
+            let ecgLength = ecgPath.getTotalLength();
+
+            // Define the heart's position (center of the screen)
+            let heartX = window.innerWidth / 2;
+
+            // Get current ECG stroke position
+            let pointAtHeart = ecgPath.getPointAtLength(ecgLength - (gsap.getProperty(ecgPath, "strokeDashoffset") + 300));
+
+            // Check if the ECG line reaches the heart
+            if (Math.abs(pointAtHeart.x - heartX) < 20 && !isBeating) {
+                isBeating = true;
+                heartbeat();
+            } else if (Math.abs(pointAtHeart.x - heartX) >= 20) {
+                isBeating = false;
+            }
+        }
+
+        // Heart Beat Animation
+        function heartbeat() {
+            gsap.to(heart, { scale: 1.5, duration: 0.3, ease: "power1.inOut" });
+            gsap.to(heart, { scale: 1, duration: 0.3, delay: 0.3, ease: "power1.inOut" });
+        }
+
+        // celebration Script
+        let donationCount = 0;  // Initialize the donation count
+        const countDisplay = document.getElementById('bloodDonorCount');
+
+        // Function to increment the blood donation count
+        function incrementDonation() {
+            donationCount++;
+            countDisplay.textContent = donationCount;
+
+            if (donationCount % 50 === 0) {
+                triggerCelebration(donationCount);
+            }
+        }
+
+        // Function to trigger the celebration animation
+        function triggerCelebration(milestone) {
+            const celebration = document.getElementById('celebration');
+            const milestoneText = document.getElementById('milestone');
+
+            milestoneText.textContent = milestone;
+
+            celebration.style.display = 'flex';
+            celebration.style.flexDirection = 'column';
+
+            createConfetti();
+            createFireworks();
+
+            // Hide the message sooner but keep the confetti and fireworks longer
+            setTimeout(() => {
+                celebration.style.display = 'none';
+            }, 3000);  // Message disappears after 3 seconds
+
+            // Confetti and fireworks last longer
+            setTimeout(() => {
+                clearEffects();
+            }, 8000);  // Effects last for 8 seconds
+        }
+
+        // Function to create confetti
+        function createConfetti() {
+            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#ff9900', '#ff1493'];
+            for (let i = 0; i < 150; i++) {  // Increased confetti count
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * 100}vh`;
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = `${Math.random() * 5 + 3}s`;  // Longer confetti duration
+                document.body.appendChild(confetti);
+            }
+        }
+
+        // Function to create fireworks
+        function createFireworks() {
+            for (let i = 0; i < 25; i++) {  // More fireworks
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.top = `${Math.random() * 100}vh`;
+                firework.style.animationDuration = `${Math.random() * 4 + 2}s`;  // Longer fireworks duration
+                document.body.appendChild(firework);
+            }
+        }
+
+        // Function to clear confetti and fireworks after animation ends
+        function clearEffects() {
+            document.querySelectorAll('.confetti').forEach(el => el.remove());
+            document.querySelectorAll('.firework').forEach(el => el.remove());
+        }
+
+        /*let res = prompt("Enter the secret key.");
+
+        if (res == "BD25-SWDC2425"){
+            updateBloodDonorCount();
+            setInterval(updateBloodDonorCount, 30000);
+        }
+        else{
+            document.getElementsByClassName('blood-drop')[0].style.display = 'none';
+            document.getElementById('bloodDonorCount').textContent = 'We will reveal the final donor count after 6PM.';
+        }*/
+
+    </script>
+</body>
+
+</html>
